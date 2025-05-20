@@ -58,7 +58,7 @@ Follow these steps to get the project running locally:
 1.  **Clone the Repository:**
 
     ```bash
-    git clone <your-repository-url>
+    git clone https://github.com/mehtahrishi/Curr_Agent
     cd Curr_Ai_Agent
     ```
 
@@ -85,12 +85,6 @@ Follow these steps to get the project running locally:
 
     ```env
     FLASK_SECRET_KEY=your_super_strong_random_flask_secret_key_here
-    GOOGLE_API_KEY=your_google_gemini_api_key_here
-
-    CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-    CLOUDINARY_API_KEY=your_cloudinary_api_key
-    CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-
     REDIS_URL=redis://default:<your_redis_password>@<your_redis_host>:<port>
     ```
 
@@ -106,24 +100,6 @@ Follow these steps to get the project running locally:
     The application will typically be available at `http://127.0.0.1:5000/` or `http://localhost:5000/`.
 
 ### Creating `requirements.txt`
-
-If you don't have one, your `requirements.txt` file should include at least:
-
-```txt
-Flask
-Flask-Session
-python-dotenv
-google-generativeai
-cloudinary
-python-pptx
-PyPDF2
-requests
-redis
-Werkzeug
-# gunicorn # Add if deploying with Gunicorn
-```
-
-You can generate it from your active virtual environment after installing all packages:
 
 ```bash
 pip freeze > requirements.txt
@@ -141,19 +117,6 @@ pip freeze > requirements.txt
 6.  Type your questions about the document into the chat input and press Enter or click the send button.
 7.  The AI will respond based on the content of your uploaded document.
 8.  To chat about a new document, simply upload another file. The context will switch to the new document.
-
------
-
-## 📄 Environment Variables (Recap)
-
-Ensure these are set in your `.env` file for local development or as environment variables in your deployment environment:
-
-  * `FLASK_SECRET_KEY`: A long, random, and secret string for Flask session security.
-  * `GOOGLE_API_KEY`: Your API key for the Google Gemini API.
-  * `CLOUDINARY_CLOUD_NAME`: Your Cloudinary account's cloud name.
-  * `CLOUDINARY_API_KEY`: Your Cloudinary API key.
-  * `CLOUDINARY_API_SECRET`: Your Cloudinary API secret.
-  * `REDIS_URL`: Your Redis connection URL for Flask-Session.
 
 -----
 
@@ -193,13 +156,5 @@ Curr_Ai_Agent/
 -----
 
 ## 🤝 Contributing
-
-(If this were an open-source project, you would add contribution guidelines here.)
-
------
-
-## 📜 License
-
-(Specify a license like MIT or Apache 2.0 if you plan to share this. For personal projects, this can be omitted or state "Proprietary".)
-
+If you'd like to contribute to this project, please fork the repository and open a pull request.
 Thank you for checking out Curr AI Agent!

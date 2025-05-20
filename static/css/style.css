@@ -465,6 +465,19 @@ button#uploadButton { /* Specific for the main upload button */
     .message {
         max-width: 95%; /* Allow messages to be a bit wider on mobile */
     }
+}   
+/* --- Footer Styles --- */
+.social-links a {
+  color: var(--light-text);
+  margin-left: 15px;
+  font-size: 1.2rem;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  opacity: 1;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 480px) {

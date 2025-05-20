@@ -1,0 +1,580 @@
+/* static/css/style.css */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../img/bg.jpg'); /* Ensure bg.jpg is in static/img/ */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center main content horizontally */
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll from blur */
+}
+
+/* --- General Card Style --- */
+.glassmorphic-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 15px;
+    border: 1px solid black;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    padding: 25px;
+    box-sizing: border-box; /* Important for consistent padding */
+}
+
+/* --- Navbar Styles --- */
+.navbar {
+    margin-bottom: 40px;
+    padding: 20px;
+    font-size: 0.9em;
+    color: white;
+    text-align: center;
+    width: 100%;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid black;
+    display: flex;
+    justify-content:center; /* For adding items to the right later */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-favicon {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+}
+
+.navbar-brand h1 {
+    font-size: 1.8em;
+    color: #ffffff;
+    margin: 0;
+    text-shadow: 0 0 8px rgba(255,255,255,0.4);
+}
+
+/* --- Main Content Grid for Two Columns --- */
+.main-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Adjust ratio as needed, e.g., 40% 60% */
+    gap: 20px; /* Space between columns */
+    width: 100%;
+    max-width: 1200px; /* Match navbar or your preferred content width */
+    padding: 0 20px; /* Padding for the grid container */
+    box-sizing: border-box;
+    margin-bottom: 30px; /* Space below the grid */
+}
+
+.left-column, .right-column {
+    display: flex; /* To make the card inside fill the column height if needed */
+    flex-direction: column;
+}
+
+.left-column .glassmorphic-card,
+.right-column .glassmorphic-card {
+    width: 100%; /* Make cards fill their column */
+    height: 100%; /* Make cards try to fill column height */
+    margin-bottom: 0; /* Remove bottom margin if it's the only card in column */
+}
+
+/* --- Full Width Section for "How it Works" etc. --- */
+.full-width-section {
+    width: 100%;
+    max-width: 1200px; /* Match other content width */
+    padding: 0 20px; /* Padding for the section */
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+.full-width-section .glassmorphic-card {
+    margin-bottom: 0; /* If it's the only card */
+}
+
+/* --- Upload Section --- */
+.upload-section h2, .intro-section h2, .features-section h2 {
+    color: #f0f0f0;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.upload-section p {
+    margin-bottom: 15px;
+    text-align: center;
+}
+.intro-section p {
+    text-align: left; /* For better readability of paragraphs */
+    margin-bottom: 10px;
+}
+
+#fileUpload {
+    display: block;
+    margin: 20px auto; /* More margin around file input */
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+    cursor: pointer;
+    width: 90%; /* Make it a bit wider */
+    max-width: 300px; /* But not too wide */
+}
+
+#fileUpload::file-selector-button {
+    padding: 8px 15px;
+    margin-right: 10px;
+    background-color: #007bff;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#fileUpload::file-selector-button:hover {
+    background-color: #0056b3;
+}
+
+.glassmorphic-button, button#uploadButton {
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+button#uploadButton { /* Specific for the main upload button */
+    display: block;
+    margin: 20px auto 0 auto; /* Center upload button */
+}
+.glassmorphic-button:hover, button#uploadButton:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.status-message {
+    margin-top: 15px;
+    font-size: 0.9em;
+    text-align: center;
+}
+.status-message.success { color: #77dd77; }
+.status-message.error { color: #ff6961; }
+
+.features-section {
+    text-align: left;
+}
+.features-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+.features-section ul li {
+    background-color: rgba(255, 255, 255, 0.05);
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border-left: 3px solid #007bff;
+}
+.features-section ul li ul {
+    margin-top: 8px;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+.features-section ul li ul li {
+    background-color: transparent;
+    border: none;
+    padding: 5px 0;
+    font-size: 0.9em;
+    color: #c7c7c7;
+}
+
+.app-footer {
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 0.9em;
+    color: #aaa;
+    text-align: center;
+    width: 100%;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid black;
+}
+.app-footer p {
+    margin: 5px 0;
+}
+
+/* --- Chat Styles --- */
+.chat-toggle-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.chat-toggle-button svg {
+    width: 28px;
+    height: 28px;
+}
+
+.chat-container {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 350px;
+    max-width: calc(100vw - 60px);
+    height: 500px;
+    max-height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    overflow: hidden;
+}
+
+#chatHeader {
+    padding: 10px 15px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+#chatHeader #chatDocName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+.close-chat-button {
+    background: none;
+    border: none;
+    color: #e0e0e0;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+#chatMessages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* --- START: Enhanced Chat Message Styles for Avatars --- */
+.message {
+    display: flex; 
+    align-items: flex-start; 
+    gap: 10px; 
+    max-width: 90%; /* Adjusted from 80% to give a bit more space with avatars */
+    word-wrap: break-word;
+    line-height: 1.4;
+    /* Removed padding and specific background here, moved to .message-content */
+    /* Removed align-self here, handled by .message.user and .message.ai justify-content */
+}
+
+.message-avatar-container {
+    flex-shrink: 0; 
+    padding-top: 5px; /* Align avatar nicely with first line of text */
+}
+
+.chat-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px; /* For emoji avatars */
+    background-color: rgba(255, 255, 255, 0.05); /* Softer background for emoji avatar placeholder */
+    color: #c0c0c0; /* Color for emoji if it's text */
+}
+
+.ai-avatar { /* Specifically for the AI's image avatar */
+    object-fit: cover; /* Ensure favicon image scales nicely */
+    background-color: transparent; /* No background if it's an image */
+}
+
+.user-avatar {
+    background-color: transparent;/* background-color: rgba(0, 123, 255, 0.1); /* Optional different bg for user emoji avatar */
+}
+
+.message-content {
+    flex-grow: 1; 
+    padding: 8px 12px; 
+    border-radius: 10px;
+    /* Background color and text color will be set by .message.user .message-content or .message.ai .message-content */
+}
+
+.message.user {
+    justify-content: flex-end; /* Align entire user message (avatar + content) to the right */
+    margin-left: auto; /* Push user messages to the right */
+    flex-direction: row-reverse; 
+}
+.message.user .message-content {
+    background-color: rgba(0, 123, 255, 0.5);
+    color: white;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 10px; /* Ensure other corner is rounded */
+}
+.message.user .message-avatar-container { /* Spacing for user avatar when on right */
+    margin-left: 0px; /* Original had 0px here, can adjust if needed */
+}
+
+
+.message.ai {
+    justify-content: flex-start; /* Align entire AI message to the left */
+    margin-right: auto; /* Push AI messages to the left */
+    /* flex-direction: row; (default) */
+}
+.message.ai .message-content {
+    background-color: rgba(80, 80, 80, 0.5);
+    color: #e0e0e0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 10px; /* Ensure other corner is rounded */
+}
+
+
+.message-content strong { /* Sender name styling */
+    display: block;
+    font-size: 0.8em;
+    margin-bottom: 3px;
+    opacity: 0.9;
+    color: #f0f0f0; /* Make sender name slightly brighter */
+}
+
+.message.thinking .message-content { 
+    font-style: italic;
+    opacity: 0.8;
+}
+/* --- END: Enhanced Chat Message Styles for Avatars --- */
+
+
+#chatInputContainer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+}
+#chatInput {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #e0e0e0;
+    margin-right: 10px;
+}
+#chatInput:focus {
+    outline: none;
+    border-color: rgba(0, 123, 255, 0.5);
+}
+
+#sendButton {
+    width: 50px;
+    height: auto;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+#sendButton svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Scrollbar styling for chatMessages */
+#chatMessages::-webkit-scrollbar { width: 8px; }
+#chatMessages::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
+#chatMessages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 10px; }
+#chatMessages::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.5); }
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .navbar {
+        margin: 10px auto;
+        padding: 10px 15px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .navbar-brand h1 {
+        font-size: 1.5em;
+    }
+    .navbar-favicon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .main-content-grid {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+        gap: 15px;
+    }
+    .left-column .glassmorphic-card,
+    .right-column .glassmorphic-card {
+        height: auto;
+    }
+
+    .full-width-section {
+        padding: 0 15px;
+    }
+
+    .glassmorphic-card {
+        padding: 20px;
+    }
+
+    .chat-container {
+        width: calc(100vw - 40px);
+        max-width: 400px;
+        bottom: 20px;
+        right: 20px;
+        height: calc(100vh - 100px);
+        max-height: 600px;
+    }
+    .chat-toggle-button {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+    .chat-toggle-button svg {
+        width: 24px;
+        height: 24px;
+    }
+    #chatHeader #chatDocName {
+        max-width: 150px;
+    }
+    .message {
+        max-width: 95%; /* Allow messages to be a bit wider on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-brand h1 {
+        font-size: 1.3em;
+    }
+    .glassmorphic-card {
+        padding: 15px;
+    }
+    .features-section ul li {
+        padding: 8px 12px;
+    }
+    #fileUpload {
+        width: 100%;
+    }
+    button#uploadButton, .glassmorphic-button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+    .chat-container {
+        bottom: 10px;
+        right: 10px;
+        width: calc(100vw - 20px);
+        height: calc(100vh - 70px); /* Adjusted for very small screens */
+    }
+    .chat-toggle-button {
+        bottom: 10px;
+        right: 10px;
+    }
+    .chat-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 18px;
+    }
+    .message-content strong {
+        font-size: 0.75em;
+    }
+}
+/* In static/css/style.css */
+
+/* ... (all your existing CSS above this) ... */
+
+/* --- Key Benefits Section Styles --- */
+.key-benefits-section { /* Already a .glassmorphic-card, so inherits that styling */
+    text-align: center; /* Center the H2 and the container by default */
+}
+.key-benefits-section h2 {
+    /* text-align: center; already centered by parent */
+    margin-bottom: 25px; /* Space below the "Key Benefits" title */
+    font-size: 1.6em; /* Adjust title size if needed */
+}
+.benefits-container {
+    display: flex;
+    justify-content: space-around; /* Distribute items evenly */
+    gap: 20px; /* Space between benefit items */
+    flex-wrap: wrap; /* Allow items to wrap onto new lines on smaller screens */
+    text-align: left; /* Align text within each benefit item to the left */
+}
+.benefit-item {
+    flex-basis: calc(33.333% - 20px); /* Aim for 3 items per row, accounting for gap */
+    /* If gap is 20px, (2 * 20px) / 3 = ~13.33px per item if fully justified.
+       Let's use a simpler calculation for flex-basis and rely on space-around.
+       Or, ensure container has some padding if items don't fill perfectly.
+    */
+    min-width: 260px; /* Minimum width for an item before it wraps/shrinks too much */
+    text-align: center; /* Center content within each benefit item card */
+    padding: 20px 15px;
+    background-color: rgba(255,255,255,0.05); /* Slightly different background for distinction */
+    border-radius: 10px ; /* Rounded corners for individual benefit cards */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid black; /* Subtle shadow for benefit cards */
+}
+.benefit-icon {
+    font-size: 2.8em; /* Make emoji icon larger */
+    line-height: 1; /* Ensure icon doesn't take too much vertical space */
+    margin-bottom: 15px;
+    display: block; /* Ensure it takes its own line */
+}
+.benefit-item h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #f0f0f0; /* Brighter color for benefit titles */
+    font-size: 1.2em;
+}
+.benefit-item p {
+    font-size: 0.9em;
+    color: #cccccc; /* Slightly lighter than default body text for contrast */
+    line-height: 1.6;
+}
+
+/* Responsive adjustments for benefits container */
+@media (max-width: 960px) { /* Adjust breakpoint as needed */
+    .benefit-item {
+        flex-basis: calc(50% - 15px); /* 2 items per row, accounting for gap */
+    }
+}
+@media (max-width: 600px) { /* Adjust breakpoint as needed */
+    .benefit-item {
+        flex-basis: 100%; /* 1 item per row */
+        min-width: unset; /* Allow it to be narrower than 260px */
+    }
+    .key-benefits-section h2 {
+        font-size: 1.4em;
+    }
+    .benefit-icon {
+        font-size: 2.5em;
+    }
+    .benefit-item h3 {
+        font-size: 1.1em;
+    }
+}
+
+/* ... (all your existing CSS below this, including responsive parts for chat etc.) ... */

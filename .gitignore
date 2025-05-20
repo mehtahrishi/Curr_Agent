@@ -1,0 +1,37 @@
+# Ignore Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore environment folders
+venv/
+env/
+
+# Ignore logs and cache
+logs/
+*.log
+*.bak
+*.swp
+*.swo
+
+# Ignore compiled files
+*.egg-info/
+dist/
+build/
+
+# Ignore migrations (can be regenerated)
+migrations/
+
+# Ignore large datasets (optional)
+datasets/
+data/
+
+# Ignore IDE settings
+.vscode/
+.idea/
+*.iml
+
+# Ignore Render-specific files (optional)
+.DS_Store
+*.env

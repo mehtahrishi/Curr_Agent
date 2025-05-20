@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curr Ai Agent - Intelligent Document Chat</title>
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar glassmorphic-card">
+        <div class="navbar-brand">
+            <img src="{{ url_for('static', filename='img/favicon.ico') }}" alt="Curr Ai Agent Favicon" class="navbar-favicon">
+            <h1>Curr Ai Agent</h1>
+        </div>
+        <!-- You can add nav links here if needed later -->
+    </nav>
+
+    <div class="main-content-grid">
+        <div class="left-column">
+            <div class="upload-section glassmorphic-card">
+                <h2>Get Started</h2>
+                <p>Select a <strong>.pptx</strong> or <strong>.pdf</strong> file to begin.</p>
+                <input type="file" id="fileUpload" accept=".pptx,.pdf">
+                <button id="uploadButton" class="glassmorphic-button">Upload & Process</button>
+                <p id="uploadStatus" class="status-message"></p>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <section class="intro-section glassmorphic-card">
+                <h2>Welcome to Curr Ai Agent!</h2>
+                <p>
+                    Tired of manually sifting through lengthy presentations or dense PDF documents? 
+                    Curr Ai Agent is here to help! Powered by advanced AI, our agent allows you to 
+                    interactively "chat" to your documents.
+                </p>
+                <p>
+                    Simply upload your file, and our AI will be ready to answer your questions,
+                    summarize content, find specific information, and much more.
+                </p>
+                <p>
+    Whether you need quick insights or detailed explanations, Curr Ai Agent adapts to your needs, making complex information easy to understand and access.
+</p>
+
+            </section>
+        </div>
+    </div>
+
+    <!-- Key Benefits Section -->
+    <div class="full-width-section">
+        <section class="key-benefits-section glassmorphic-card">
+            <h2>🌟 Key Benefits</h2>
+            <div class="benefits-container">
+                <div class="benefit-item">
+                    <div class="benefit-icon">⏱️</div>
+                    <h3>Save Time</h3>
+                    <p>Instantly get answers and summaries from your documents without manual searching.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">💡</div>
+                    <h3>Understand Faster</h3>
+                    <p>Grasp complex information quickly with AI-powered insights and navigation.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">💬</div>
+                    <h3>Interact Naturally</h3>
+                    <p>Converse with your documents in plain language to find what you need efficiently.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- End Key Benefits Section -->
+
+    <div class="full-width-section">
+        <section class="features-section glassmorphic-card">
+            <h2>How It Works</h2>
+            <ul>
+                <li><strong>Upload:</strong> Securely upload your PowerPoint (.pptx) or PDF (.pdf) file.</li>
+                <li><strong>Process:</strong> Our system intelligently extracts the textual content from your document.</li>
+                <li><strong>Chat:</strong> Open the chat interface and ask questions in natural language.
+                    <ul>
+                        <li>"What is this document about?"</li>
+                        <li>"Summarize slide 5."</li>
+                        <li>"What does page 3 say about the new policy?"</li>
+                        <li>"Find information on financial projections."</li>
+                    </ul>
+                </li>
+                <li><strong>Understand:</strong> Get concise and relevant answers directly from your document's content.</li>
+            </ul>
+        </section>
+    </div>
+        
+    <footer class="app-footer">
+        <p>© 2024 Curr Ai Agent. Powered by Generative AI.</p>
+        <p><small>Remember to handle sensitive documents with care and according to your organization's policies.</small></p>
+    </footer>
+
+    <!-- Chat toggle button -->
+    <button id="toggleChatButton" class="chat-toggle-button glassmorphic-button" style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    </button>
+
+    <!-- Chat Container -->
+    <div id="chatContainer" class="chat-container glassmorphic-card" style="display: none;">
+        <div id="chatHeader">
+            Chatting about: <span id="chatDocName">your document</span>
+            <button id="closeChatButton" class="close-chat-button">×</button>
+        </div>
+        <div id="chatMessages">
+            <!-- Messages will appear here -->
+        </div>
+        <div id="chatInputContainer">
+            <input type="text" id="chatInput" placeholder="Ask about the document...">
+            <button id="sendButton" class="glassmorphic-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Hidden input to pass initial document name from Flask to JavaScript -->
+    <input type="hidden" id="initialDocNameHolder" value="{{ current_doc_filename if current_doc_filename else '' }}">
+    
+    <!-- JavaScript file -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

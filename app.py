@@ -8,13 +8,13 @@ from pptx import Presentation
 import PyPDF2
 import re
 import logging
-from flask_session import Session
+
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 import requests
 import io
-import redis
+
 
 # Load environment variables from .env file
 load_dotenv()
@@ -22,17 +22,17 @@ load_dotenv()
 app = Flask(__name__)
 
 # --- Configure Flask-Session ---
-app.config["SESSION_TYPE"] = "redis"
+app.config["SESSION_TYPE"] = "null"
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_USE_SIGNER"] = True
-app.config["SESSION_REDIS"] = redis.from_url(os.getenv("REDIS_URL"))
+
 
 # --- Flask Secret Key ---
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "hrishi")
 if app.secret_key == "hrishi":
     app.logger.warning("Using default FLASK_SECRET_KEY. Please set a strong secret key in your .env file.")
 
-Session(app)
+
 
 # --- Configure Cloudinary ---
 try:
@@ -57,7 +57,7 @@ try:
     if not gemini_api_key:
         raise ValueError("GOOGLE_API_KEY not found in environment variables.")
     genai.configure(api_key=gemini_api_key)
-    model = genai.GenerativeModel('gemini-1.5-flash-latest')
+    model = genai.GenerativeModel('gemini-2.5-flash')
 except Exception as e:
     if hasattr(app, 'logger'): app.logger.error(f"Error configuring Gemini API: {e}")
     else: print(f"CRITICAL Error configuring Gemini API before logger setup: {e}")
@@ -220,4 +220,3 @@ def chat_route():
 
 if __name__ == '__main__':
     app.logger.setLevel(logging.DEBUG)
-    app.run(debug=True, host='0.0.0.0', port=5000)
